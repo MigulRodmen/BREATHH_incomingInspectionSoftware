@@ -16,7 +16,8 @@ namespace FAI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Partnumberselection());
+            //  Application.Run(new Partnumberselection());
+            Application.Run(new Login());
         }
     }
 }
