@@ -11,83 +11,72 @@ using System.Data.OleDb;
 
 namespace FAI
 {
-    public partial class Login : Form
-    {
-     OleDbConnection con;
-     public Login()
-     {
-      InitializeComponent();
-     }
-
-     private void Login_Load(object sender, EventArgs e)
-     {
-      con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\\WINDELL-GINKJNK\LightCareFiles\credentialsDatabase.accdb");
-      try
-      {
-       con.Open();
-      }
-      catch
-      {
-       System.Windows.Forms.MessageBox.Show("Database Failed");
-      }
-      
-     }
-
-        private void blindbutton_MouseDown(object sender, MouseEventArgs e)
-        {
-            blindbutton.BackgroundImageLayout = ImageLayout.Stretch;
-            blindbutton.BackgroundImage = FAI.Properties.Resources.openedeye;
-            passwordTextBox.UseSystemPasswordChar = false;
-        }
-
-
-        private void blindbutton_MouseUp(object sender, MouseEventArgs e)
-        {
-          blindbutton.BackgroundImageLayout = ImageLayout.Stretch;
-            blindbutton.BackgroundImage = FAI.Properties.Resources.blindeye;
-            passwordTextBox.UseSystemPasswordChar = true;
-            passwordTextBox.Select();
-        }
-
-     
-
-        private void closebutton_Click_1(object sender, EventArgs e)
-        {
-         System.Windows.Forms.Application.Exit();
-        }
-
-        private void minimizeButton_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-        int xPos;
-        int yPos;
-        private void flowLayoutPanel2_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == System.Windows.Forms.MouseButtons.Left)
-            {
-                xPos = e.X;
-                yPos = e.Y;
-            }
-        }
-
-        private void flowLayoutPanel2_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == System.Windows.Forms.MouseButtons.Left)
-            {
-                this.Left += e.X - xPos;
-                this.Top += e.Y - yPos;
-            }
-        }
-
-        private void flowLayoutPanel1_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == System.Windows.Forms.MouseButtons.Left)
-            {
-                xPos = e.X;
-                yPos = e.Y;
-            }
-        }
+ public partial class Login : Form
+ {
+  OleDbConnection con;
+  public Login()
+  {
+   InitializeComponent();
+  }
+  private void Login_Load(object sender, EventArgs e)
+  {
+   con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\\WINDELL-GINKJNK\LightCareFiles\credentialsDatabase.accdb");
+   try
+   {
+    con.Open();
+   }
+   catch
+   {
+    MessageBox.Show("Database Failed");
+   }  
+  }
+  private void blindbutton_MouseDown(object sender, MouseEventArgs e)
+  {
+   blindbutton.BackgroundImageLayout = ImageLayout.Stretch;
+   blindbutton.BackgroundImage = FAI.Properties.Resources.openedeye;
+   passwordTextBox.UseSystemPasswordChar = false;
+  }
+  private void blindbutton_MouseUp(object sender, MouseEventArgs e)
+  {
+   blindbutton.BackgroundImageLayout = ImageLayout.Stretch;
+   blindbutton.BackgroundImage = FAI.Properties.Resources.blindeye;
+   passwordTextBox.UseSystemPasswordChar = true;
+   passwordTextBox.Select();
+  }
+  private void closebutton_Click_1(object sender, EventArgs e)
+  {
+   Application.Exit();
+  }
+  private void minimizeButton_Click(object sender, EventArgs e)
+  {
+   this.WindowState = FormWindowState.Minimized;
+  }
+  int xPos;
+  int yPos;
+  private void flowLayoutPanel2_MouseDown(object sender, MouseEventArgs e)
+  {
+   if (e.Button == System.Windows.Forms.MouseButtons.Left)
+   {
+    xPos = e.X;
+    yPos = e.Y;
+   }
+  }
+  private void flowLayoutPanel2_MouseMove(object sender, MouseEventArgs e)
+  {
+   if (e.Button == System.Windows.Forms.MouseButtons.Left)
+   {
+    this.Left += e.X - xPos;
+    this.Top += e.Y - yPos;
+   }
+  }
+  private void flowLayoutPanel1_MouseDown(object sender, MouseEventArgs e)
+  {
+   if (e.Button == System.Windows.Forms.MouseButtons.Left)
+   {
+    xPos = e.X;
+    yPos = e.Y;
+   }
+  }
 
         private void flowLayoutPanel1_MouseMove(object sender, MouseEventArgs e)
         {
@@ -128,6 +117,7 @@ namespace FAI
          }
          if(blankuser!=1)
          {
+          passwordTextBox.Text="";
           MessageBox.Show("Please fullfill your username");
          }
          else
@@ -142,6 +132,7 @@ namespace FAI
          }
          if(blankpassword!= 1)
          {
+          passwordTextBox.Select();
           MessageBox.Show("Please fullfill the password");
          }
          else
@@ -172,9 +163,14 @@ namespace FAI
             usernameTextBox.Text="";
             passwordTextBox.Text="";
             string position= ds.Tables[0].Rows[0][5].ToString();
+                   
             if (position.IndexOf("incomingInspector")!=-1||position.IndexOf("SrTech")!=-1|| position.IndexOf("JrTech")!= -1)
             {
-             
+             string user= ds.Tables[0].Rows[0][3].ToString()+" "+ds.Tables[0].Rows[0][4].ToString();
+             string enumber= ds.Tables[0].Rows[0][6].ToString();
+             mainForm mainy= new mainForm(user,enumber);
+             mainy.Show();
+             this.Hide();
             }
             else
             {
