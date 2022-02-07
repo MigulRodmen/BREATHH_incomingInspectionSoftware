@@ -35,7 +35,7 @@
             this.submitButton = new System.Windows.Forms.Button();
             this.sampleslabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.labelName = new System.Windows.Forms.Label();
             this.waitingforpdf = new System.Windows.Forms.Timer(this.components);
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.closebutton = new System.Windows.Forms.Button();
@@ -44,9 +44,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.label8 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // axAcroPDF1
@@ -104,16 +107,16 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Inspector:";
             // 
-            // label4
+            // labelName
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label4.Location = new System.Drawing.Point(756, 466);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(131, 24);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Bryan Magana";
+            this.labelName.AutoSize = true;
+            this.labelName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelName.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.labelName.Location = new System.Drawing.Point(756, 466);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(61, 24);
+            this.labelName.TabIndex = 5;
+            this.labelName.Text = "Name";
             // 
             // waitingforpdf
             // 
@@ -216,17 +219,37 @@
             this.label8.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label8_MouseDown);
             this.label8.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label8_MouseMove);
             // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.flowLayoutPanel3.Controls.Add(this.label2);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 30);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(915, 1);
+            this.flowLayoutPanel3.TabIndex = 39;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Belle Sans Ultra Cond Lt", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.label2.Location = new System.Drawing.Point(3, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 28);
+            this.label2.TabIndex = 18;
+            // 
             // PDFviewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(28)))), ((int)(((byte)(36)))));
             this.ClientSize = new System.Drawing.Size(915, 612);
+            this.Controls.Add(this.flowLayoutPanel3);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.labelName);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.sampleslabel);
             this.Controls.Add(this.submitButton);
@@ -246,6 +269,8 @@
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
+            this.flowLayoutPanel3.ResumeLayout(false);
+            this.flowLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -258,7 +283,7 @@
         private System.Windows.Forms.Button submitButton;
         private System.Windows.Forms.Label sampleslabel;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.Timer waitingforpdf;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button closebutton;
@@ -267,5 +292,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.Label label2;
     }
 }

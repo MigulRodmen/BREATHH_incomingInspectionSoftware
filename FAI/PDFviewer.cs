@@ -8,11 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
+using System.Data.OleDb;
 
 namespace FAI
 {
  public partial class PDFviewer : Form
  {
+  OleDbConnection con;
   bool accept= true;
   DateTime thisDay;
   Partnumberselection pnsg;
@@ -37,8 +39,10 @@ namespace FAI
   int ncounting;
   int scounting;
   bool[] finaldisposition;
-  public PDFviewer(Partnumberselection pns,string partnumber,string rev, string description, string[] dimensions,string[] tolerances, string vendor, string batchsize,string batchnum)
+  string user;
+  public PDFviewer(Partnumberselection pns,string partnumber,string rev, string description, string[] dimensions,string[] tolerances, string vendor, string batchsize,string batchnum,string user1)
   {
+   user= user1;
    this.partnumber = partnumber;
    this.rev= rev;
    this.description = description;
@@ -161,6 +165,7 @@ namespace FAI
    {
     pnsg.Hide();
     waitingforpdf.Start();
+    labelName.Text = user;
    }
 
    private void PDFviewer_FormClosed(object sender, FormClosedEventArgs e)
@@ -196,8 +201,20 @@ namespace FAI
     {
      MessageBox.Show("Sampling Finished");
      DateTime thisDay = DateTime.Today;
+     string strSqlinsertdata = "INSERT INTO incomingRecordsTable (Partnumber, Dimension1, Status1, Dimension2, Status2, Dimension3, Status3, Dimension4, Status4, Dimension5, Status5, Batch, Dating, Status, Comments, Inspector, Vendor, Batchsize, Rev) VALUES (";
      try
      {
+      con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\\WINDELL-GINKJNK\LightCareFiles\incomingFiles\incomingDatabase.accdb");
+      try
+      {
+       con.Open();
+      }
+      catch
+      {
+      MessageBox.Show("Database Failed");
+      }  
+
+
       this.Close();
       string path = @"\\WINDELL-GINKJNK\LightCareFiles\F-826-001-A Incoming Inspection.xlsx";
       oXL = new Excel.Application();
@@ -210,6 +227,9 @@ namespace FAI
       false, 0, true, false, false);
       mWorkSheets = mWorkBook.Worksheets;
       mWSheet1 = (Microsoft.Office.Interop.Excel.Worksheet)mWorkSheets.get_Item("Report");
+
+/////tu string se llena aqui 
+
       mWSheet1.Cells[4,4].value =partnumber;
       mWSheet1.Cells[4,13].value = rev;
       mWSheet1.Cells[4,16].value= description;   
@@ -217,6 +237,9 @@ namespace FAI
       mWSheet1.Cells[5,20].value= batchnum;
       mWSheet1.Cells[5,23].value  =batchsize;          
       mWSheet1.Cells[43,13].value = thisDay.ToString("d");
+
+
+
       for (int i=0;i<dimensions.Length; i++)
       {
        if(dimensions[i]!="N/A")
@@ -297,11 +320,18 @@ namespace FAI
        mWSheet1.Cells[44, 20].value = " ";
       }
 
-      mWSheet1.Cells[43, 3].value = "BRYAN MAGANA";
+      mWSheet1.Cells[43, 3].value = user;
       // mWSheet1.PrintOutEx(Type.Missing, Type.Missing, Type.Missing, Type.Missing,
       //Type.Missing, Type.Missing, Type.Missing, Type.Missing);
       mWorkBook.ExportAsFixedFormat(Microsoft.Office.Interop.Excel.XlFixedFormatType.xlTypePDF, @"\\WINDELL-GINKJNK\LightCareFiles\incomingReports\" + partnumber+".pdf");
       mWorkBook.Close();
+
+      OleDbCommand insertcommanddata = new OleDbCommand(strSqlinsertdata, con);
+      int result = insertcommanddata.ExecuteNonQuery();
+      if (result < 0)
+      {
+       MessageBox.Show("Error writing to query");
+      }
       this.Close();
 
      }

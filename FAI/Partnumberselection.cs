@@ -15,9 +15,13 @@ namespace FAI
 {
  public partial class Partnumberselection : Form
  {
-  OleDbConnection con; 
-  public Partnumberselection()
+  OleDbConnection con;
+  mainForm mainy;
+  string user;
+  public Partnumberselection(string user1,mainForm mainy1)
   {  
+   mainy= mainy1;
+   user= user1;
    InitializeComponent();
   }
   private void searchButton_Click(object sender, EventArgs e)
@@ -65,7 +69,7 @@ namespace FAI
      }
      con.Close();
         
-     PDFviewer viewer = new PDFviewer(this,partNumberComboBox.Text,rev,description,dimensions,tolerances,vendorComboBox.Text,batchsize.Value.ToString(),batchTextBox.Text);
+     PDFviewer viewer = new PDFviewer(this,partNumberComboBox.Text,rev,description,dimensions,tolerances,vendorComboBox.Text,batchsize.Value.ToString(),batchTextBox.Text,user);
      partNumberComboBox.SelectedIndex = -1;
      partNumberComboBox.Text="";
      batchTextBox.Text="";
@@ -154,8 +158,9 @@ namespace FAI
 
    private void closebutton_Click(object sender, EventArgs e)
    {
-            System.Windows.Forms.Application.Exit();
-        }
+    this.Close();
+    mainy.Show();
+   }
 
         private void minimizeButton_Click(object sender, EventArgs e)
         {

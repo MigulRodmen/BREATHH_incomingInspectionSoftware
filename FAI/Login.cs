@@ -164,11 +164,11 @@ namespace FAI
             passwordTextBox.Text="";
             string position= ds.Tables[0].Rows[0][5].ToString();
                    
-            if (position.IndexOf("incomingInspector")!=-1||position.IndexOf("SrTech")!=-1|| position.IndexOf("JrTech")!= -1)
+            if (position.IndexOf("incomingInspector")!=-1||position.IndexOf("SrTech")!=-1|| position.IndexOf("JrTech")!= -1||position.IndexOf("Management")!=-1)
             {
              string user= ds.Tables[0].Rows[0][3].ToString()+" "+ds.Tables[0].Rows[0][4].ToString();
              string enumber= ds.Tables[0].Rows[0][6].ToString();
-             mainForm mainy= new mainForm(user,enumber);
+             mainForm mainy= new mainForm(user,enumber,position,this);
              mainy.Show();
              this.Hide();
             }

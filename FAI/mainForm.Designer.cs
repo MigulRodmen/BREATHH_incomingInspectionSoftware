@@ -36,25 +36,33 @@
             this.minimizeButton = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.nameLabel = new System.Windows.Forms.Label();
             this.position1label = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.logoutButton = new System.Windows.Forms.Button();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.incomingButton = new System.Windows.Forms.Button();
+            this.returnedButton = new System.Windows.Forms.Button();
             this.position2label = new System.Windows.Forms.Label();
             this.position3label = new System.Windows.Forms.Label();
             this.position4label = new System.Windows.Forms.Label();
             this.position5label = new System.Windows.Forms.Label();
+            this.contextStrip = new System.Windows.Forms.Label();
+            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.NCMRButton = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label3 = new System.Windows.Forms.Label();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
+            this.flowLayoutPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel2
@@ -63,8 +71,10 @@
             this.flowLayoutPanel2.Controls.Add(this.label8);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(622, 30);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(418, 30);
             this.flowLayoutPanel2.TabIndex = 21;
+            this.flowLayoutPanel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.flowLayoutPanel2_MouseDown);
+            this.flowLayoutPanel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.flowLayoutPanel2_MouseMove);
             // 
             // label8
             // 
@@ -82,10 +92,12 @@
             this.flowLayoutPanel1.Controls.Add(this.closebutton);
             this.flowLayoutPanel1.Controls.Add(this.minimizeButton);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(620, 0);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(416, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(90, 30);
             this.flowLayoutPanel1.TabIndex = 25;
+            this.flowLayoutPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.flowLayoutPanel1_MouseDown);
+            this.flowLayoutPanel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.flowLayoutPanel1_MouseMove);
             // 
             // closebutton
             // 
@@ -129,7 +141,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Belle Sans Ultra Cond Bd", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label6.Location = new System.Drawing.Point(-1, 405);
+            this.label6.Location = new System.Drawing.Point(0, 405);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(113, 13);
             this.label6.TabIndex = 26;
@@ -140,22 +152,22 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Belle Sans Ultra Cond Bd", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label5.Location = new System.Drawing.Point(660, 405);
+            this.label5.Location = new System.Drawing.Point(459, 405);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(50, 13);
             this.label5.TabIndex = 27;
             this.label5.Text = "Breathh, Inc.";
             // 
-            // label1
+            // nameLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label1.Location = new System.Drawing.Point(28, 233);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(152, 25);
-            this.label1.TabIndex = 28;
-            this.label1.Text = "Bryan Magana";
+            this.nameLabel.AutoSize = true;
+            this.nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameLabel.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.nameLabel.Location = new System.Drawing.Point(73, 233);
+            this.nameLabel.Name = "nameLabel";
+            this.nameLabel.Size = new System.Drawing.Size(68, 25);
+            this.nameLabel.TabIndex = 28;
+            this.nameLabel.Text = "Name";
             // 
             // position1label
             // 
@@ -163,11 +175,11 @@
             this.position1label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(28)))), ((int)(((byte)(36)))));
             this.position1label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.position1label.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.position1label.Location = new System.Drawing.Point(64, 276);
+            this.position1label.Location = new System.Drawing.Point(79, 276);
             this.position1label.Name = "position1label";
-            this.position1label.Size = new System.Drawing.Size(88, 16);
+            this.position1label.Size = new System.Drawing.Size(56, 16);
             this.position1label.TabIndex = 30;
-            this.position1label.Text = "Jr Technician";
+            this.position1label.Text = "Position";
             // 
             // label9
             // 
@@ -178,7 +190,7 @@
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(36, 16);
             this.label9.TabIndex = 33;
-            this.label9.Text = "1933";
+            this.label9.Text = "####";
             // 
             // flowLayoutPanel4
             // 
@@ -201,27 +213,28 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(8, 367);
+            this.button1.Location = new System.Drawing.Point(9, 367);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 36;
             this.button1.Text = "Settings";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // logoutButton
             // 
-            this.button2.Location = new System.Drawing.Point(125, 367);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 37;
-            this.button2.Text = "Record";
-            this.button2.UseVisualStyleBackColor = true;
+            this.logoutButton.Location = new System.Drawing.Point(126, 367);
+            this.logoutButton.Name = "logoutButton";
+            this.logoutButton.Size = new System.Drawing.Size(75, 23);
+            this.logoutButton.TabIndex = 37;
+            this.logoutButton.Text = "Log Out";
+            this.logoutButton.UseVisualStyleBackColor = true;
+            this.logoutButton.Click += new System.EventHandler(this.logoutButton_Click);
             // 
             // flowLayoutPanel3
             // 
             this.flowLayoutPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.flowLayoutPanel3.Controls.Add(this.label2);
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 30);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(-204, 30);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             this.flowLayoutPanel3.Size = new System.Drawing.Size(710, 1);
             this.flowLayoutPanel3.TabIndex = 38;
@@ -236,23 +249,32 @@
             this.label2.Size = new System.Drawing.Size(0, 28);
             this.label2.TabIndex = 18;
             // 
-            // button3
+            // incomingButton
             // 
-            this.button3.Location = new System.Drawing.Point(294, 354);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 39;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.incomingButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(28)))), ((int)(((byte)(36)))));
+            this.incomingButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.incomingButton.Location = new System.Drawing.Point(245, 56);
+            this.incomingButton.Margin = new System.Windows.Forms.Padding(1);
+            this.incomingButton.Name = "incomingButton";
+            this.incomingButton.Size = new System.Drawing.Size(70, 44);
+            this.incomingButton.TabIndex = 39;
+            this.incomingButton.Text = "Incoming Inspection";
+            this.incomingButton.UseVisualStyleBackColor = false;
+            this.incomingButton.Click += new System.EventHandler(this.incomingButton_Click);
+            this.incomingButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button3_MouseMove);
             // 
-            // button4
+            // returnedButton
             // 
-            this.button4.Location = new System.Drawing.Point(493, 354);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 40;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.returnedButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(28)))), ((int)(((byte)(36)))));
+            this.returnedButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.returnedButton.Location = new System.Drawing.Point(418, 56);
+            this.returnedButton.Name = "returnedButton";
+            this.returnedButton.Size = new System.Drawing.Size(70, 44);
+            this.returnedButton.TabIndex = 40;
+            this.returnedButton.Text = "Returned";
+            this.returnedButton.UseVisualStyleBackColor = false;
+            this.returnedButton.Click += new System.EventHandler(this.returnedButton_Click);
+            this.returnedButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.returnedButton_MouseMove);
             // 
             // position2label
             // 
@@ -260,11 +282,11 @@
             this.position2label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(28)))), ((int)(((byte)(36)))));
             this.position2label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.position2label.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.position2label.Location = new System.Drawing.Point(64, 292);
+            this.position2label.Location = new System.Drawing.Point(79, 292);
             this.position2label.Name = "position2label";
-            this.position2label.Size = new System.Drawing.Size(88, 16);
+            this.position2label.Size = new System.Drawing.Size(56, 16);
             this.position2label.TabIndex = 41;
-            this.position2label.Text = "Jr Technician";
+            this.position2label.Text = "Position";
             // 
             // position3label
             // 
@@ -272,11 +294,11 @@
             this.position3label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(28)))), ((int)(((byte)(36)))));
             this.position3label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.position3label.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.position3label.Location = new System.Drawing.Point(64, 308);
+            this.position3label.Location = new System.Drawing.Point(79, 308);
             this.position3label.Name = "position3label";
-            this.position3label.Size = new System.Drawing.Size(88, 16);
+            this.position3label.Size = new System.Drawing.Size(56, 16);
             this.position3label.TabIndex = 42;
-            this.position3label.Text = "Jr Technician";
+            this.position3label.Text = "Position";
             // 
             // position4label
             // 
@@ -284,11 +306,11 @@
             this.position4label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(28)))), ((int)(((byte)(36)))));
             this.position4label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.position4label.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.position4label.Location = new System.Drawing.Point(64, 324);
+            this.position4label.Location = new System.Drawing.Point(79, 324);
             this.position4label.Name = "position4label";
-            this.position4label.Size = new System.Drawing.Size(88, 16);
+            this.position4label.Size = new System.Drawing.Size(56, 16);
             this.position4label.TabIndex = 43;
-            this.position4label.Text = "Jr Technician";
+            this.position4label.Text = "Position";
             // 
             // position5label
             // 
@@ -296,30 +318,96 @@
             this.position5label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(28)))), ((int)(((byte)(36)))));
             this.position5label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.position5label.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.position5label.Location = new System.Drawing.Point(64, 340);
+            this.position5label.Location = new System.Drawing.Point(79, 340);
             this.position5label.Name = "position5label";
-            this.position5label.Size = new System.Drawing.Size(88, 16);
+            this.position5label.Size = new System.Drawing.Size(56, 16);
             this.position5label.TabIndex = 44;
-            this.position5label.Text = "Jr Technician";
+            this.position5label.Text = "Position";
+            // 
+            // contextStrip
+            // 
+            this.contextStrip.AutoSize = true;
+            this.contextStrip.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.contextStrip.Location = new System.Drawing.Point(242, 123);
+            this.contextStrip.Name = "contextStrip";
+            this.contextStrip.Size = new System.Drawing.Size(0, 13);
+            this.contextStrip.TabIndex = 45;
+            // 
+            // flowLayoutPanel5
+            // 
+            this.flowLayoutPanel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(34)))), ((int)(((byte)(42)))));
+            this.flowLayoutPanel5.Controls.Add(this.label1);
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(234, 204);
+            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(267, 2);
+            this.flowLayoutPanel5.TabIndex = 46;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Belle Sans Ultra Cond Lt", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 28);
+            this.label1.TabIndex = 18;
+            // 
+            // NCMRButton
+            // 
+            this.NCMRButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(28)))), ((int)(((byte)(36)))));
+            this.NCMRButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.NCMRButton.Location = new System.Drawing.Point(333, 56);
+            this.NCMRButton.Name = "NCMRButton";
+            this.NCMRButton.Size = new System.Drawing.Size(70, 44);
+            this.NCMRButton.TabIndex = 47;
+            this.NCMRButton.Text = "NCMR";
+            this.NCMRButton.UseVisualStyleBackColor = false;
+            this.NCMRButton.Click += new System.EventHandler(this.NCMRButton_Click);
+            this.NCMRButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.NCMRButton_MouseMove);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(230, 235);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.Size = new System.Drawing.Size(271, 148);
+            this.dataGridView1.TabIndex = 48;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label3.Location = new System.Drawing.Point(340, 215);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 13);
+            this.label3.TabIndex = 49;
+            this.label3.Text = "RECORD";
             // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(28)))), ((int)(((byte)(36)))));
-            this.ClientSize = new System.Drawing.Size(710, 418);
+            this.ClientSize = new System.Drawing.Size(506, 418);
+            this.Controls.Add(this.returnedButton);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.NCMRButton);
+            this.Controls.Add(this.flowLayoutPanel5);
+            this.Controls.Add(this.contextStrip);
             this.Controls.Add(this.position5label);
             this.Controls.Add(this.position4label);
             this.Controls.Add(this.position3label);
             this.Controls.Add(this.position2label);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.incomingButton);
             this.Controls.Add(this.flowLayoutPanel3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.logoutButton);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.position1label);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.flowLayoutPanel1);
@@ -332,6 +420,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "mainForm";
             this.Load += new System.EventHandler(this.mainForm_Load);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mainForm_MouseMove);
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
@@ -339,6 +428,9 @@
             this.flowLayoutPanel4.PerformLayout();
             this.flowLayoutPanel3.ResumeLayout(false);
             this.flowLayoutPanel3.PerformLayout();
+            this.flowLayoutPanel5.ResumeLayout(false);
+            this.flowLayoutPanel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -353,20 +445,26 @@
         private System.Windows.Forms.Button minimizeButton;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.Label position1label;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button logoutButton;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button incomingButton;
+        private System.Windows.Forms.Button returnedButton;
         private System.Windows.Forms.Label position2label;
         private System.Windows.Forms.Label position3label;
         private System.Windows.Forms.Label position4label;
         private System.Windows.Forms.Label position5label;
+        private System.Windows.Forms.Label contextStrip;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button NCMRButton;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label3;
     }
 }
